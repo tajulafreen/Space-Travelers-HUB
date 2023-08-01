@@ -15,7 +15,7 @@ const Header = () => {
                     <nav>
                         <ul>
                             <li>
-                                <NavLink path={"/"} content={"Rocket"} />
+                                <NavLink path={"/rockets"} content={"Rocket"} />
                             </li>
 
                             <li>
