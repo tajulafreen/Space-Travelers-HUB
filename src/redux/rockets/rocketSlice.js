@@ -32,6 +32,7 @@ const rocketsSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchRockets.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.status = 'succeeded';
         state.data = action.payload;
       })
