@@ -10,8 +10,6 @@ const Rocket = () => {
     dispatch(fetchRockets());
   }, [dispatch])
 
-  console.log(rocketsdata.data, 'from page')
-
   return (
     <div>
       {rocketsdata.loading ? (
