@@ -16,7 +16,7 @@ const routes = [
   },
   {
     id: 3,
-    path: '/rockets',
+    path: '/rockets?',
     element: <Rocket />,
   },
 ];
