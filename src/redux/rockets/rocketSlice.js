@@ -11,7 +11,6 @@ const initialState = {
 export const fetchRockets = createAsyncThunk('rockets/fetchData', async () => {
   try {
     const response = await axios.get('https://api.spacexdata.com/v3/rockets');
-    console.log(response.data, 'from request');
     const rocketsData = response.data.map((rocket) => ({
       id: rocket.id,
       name: rocket.rocket_name,
@@ -37,7 +36,6 @@ const rocketsSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchRockets.fulfilled, (state, action) => {
-        console.log(action.payload, 'from reducer')
         state.status = 'succeeded';
         state.data = action.payload;
       })
