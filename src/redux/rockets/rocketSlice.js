@@ -33,7 +33,7 @@ const rocketsSlice = createSlice({
     bookRocket: (state, action) => {
       const bookRocket = state.data.map((rocket) => {
         if (rocket.id === action.payload) {
-          return { ...rocket, reserved: !rocket.reserved }
+          return { ...rocket, reserved: true }
         } else {
           return { ...rocket }
         }
