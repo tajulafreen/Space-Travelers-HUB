@@ -16,16 +16,40 @@ const Mission = () => {
   return (
     <main>
       {state.loading && <p className={classes.loadingIndicator} >...loading</p>}
-      <ul>
-        {state.missions.map((mission) => {
-          return <>
-            <p><strong>mission-name</strong>:{mission.mission_name} </p>
-            <p> <strong>mission-description:</strong>  {mission.description} </p>
-            <hr />
-          </>
-        })}
-      </ul>
+      <table className={classes.missionTable}>
+        <thead className={classes.missionThead}>
+          <th >
+            <h3>Mision</h3>
+          </th>
 
+          <th>
+            <h3>Description</h3>
+          </th>
+
+          <th>
+            <h3>Status</h3>
+          </th>
+
+          <th>
+            
+          </th>
+        </thead>
+
+        <tbody>
+          {state.missions.map((mission) => {
+
+            return (
+              <tr key={mission.id}>
+                <td><h3>{mission.mission_name}</h3></td>
+                <td><p>{mission.description}</p></td>
+                <td><div className={classes.status} ><p>active member</p></div></td>
+                <td><button>Leave Mission</button></td>
+              </tr>
+            )
+
+          })}
+        </tbody>
+      </table>
     </main >
   );
 }
