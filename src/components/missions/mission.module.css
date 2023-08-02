@@ -2,3 +2,48 @@
   text-align: center;
   margin-top: 50px;
 }
+
+.missionTable {
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  border-collapse: collapse;
+  background: white;
+  border: 1.5px solid rgba(0, 0, 0, 0.196);
+}
+
+.missionTable thead th {
+  border: 1px solid rgba(0, 0, 0, 0.101);
+  color: #334155;
+  text-align: left;
+  padding: 10px;
+}
+
+.missionTable tr:nth-child(even) {
+  background-color: #0000001e;
+}
+
+.missionTable tbody td {
+  border: 1px solid rgba(0, 0, 0, 0.196);
+  color: #334155;
+  padding: 20px;
+  line-height: 1.7rem;
+}
+
+.missionTable tbody td button {
+  width: 150px;
+  background-color: transparent;
+  border: 1px solid red;
+  color: red;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.missionTable .status p {
+  width: 110px;
+  background-color: #2563eb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+}
