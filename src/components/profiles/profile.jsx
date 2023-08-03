@@ -8,23 +8,22 @@ const Profile = ()=> {
 
   const myJoinedMissions = missions.filter((mission) => joinedMissions.includes(mission.mission_id));
   return (
-    <section className="profile-container">
+    <div className="profile-container">
       <div className="column">
-        <h2 className="column-head">My Missions</h2>
+        <h2 className="mission-heading">My Missions</h2>
         {myJoinedMissions.length === 0? (
-          <p className="empty-message">No joined missions.</p>
+          <p className="message">No joined missions.</p>
         ) : (
           <ul className="u-list">
             {myJoinedMissions.map((mission) => (
-              <li className="profile-list" key={mission.mission_id}>
-                <h4 className="my-missions-name">{mission.mission_name}</h4>
+              <li className="mission-list" key={mission.mission_id}>
+                <h4 className="missions-name">{mission.mission_name}</h4>
               </li>
             ))}
           </ul>
         )}
       </div>
-
-    </section>
+    </div>
   );
 };
 
