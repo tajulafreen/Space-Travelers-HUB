@@ -4,7 +4,7 @@ import { missionSelector } from '../../redux/missions/missionSlice';
 import { useSelector, } from 'react-redux/es/hooks/useSelector';
 import { useDispatch } from 'react-redux';
 import classes from './mission.module.css';
-import { joinMission as joinMissionAction } from '../../redux/missions/missionSlice';
+import { joinMission as joinMissionAction, cancelMission as cancelMissionAction } from '../../redux/missions/missionSlice';
 
 const Mission = () => {
   const state = useSelector(missionSelector);
@@ -14,12 +14,12 @@ const Mission = () => {
     dispatch(fetchMissionThunk())
   }, [])
 
-
-
-
   const joinMission = (id) => {
     dispatch(joinMissionAction(id));
-    console.log(state);
+  }
+
+  const cancelMission = (id) => {
+    dispatch(cancelMissionAction(id));
   }
 
   return (
@@ -46,16 +46,15 @@ const Mission = () => {
 
         <tbody>
           {state.missions.map((mission) => {
-
             return (
-              <tr key={mission.id}>
+              <tr key={mission.mission_id}>
                 <td><h3>{mission.mission_name}</h3></td>
                 <td><p>{mission.description}</p></td>
-                <td><div className={!mission.joined ? classes.statusNotActive : classes.StatusActive} ><p> {mission.reserved ? <>Not a member</> : <> Active member</>}</p></div></td>
+                <td><div className={!mission.joined ? classes.statusNotActive : classes.StatusActive} ><p> {!mission.joined ? <>Not a member</> : <> Active member</>}</p></div></td>
                 <td>
                   {mission.joined ?
-                    <button >Leave Mission</button> :
-                    <button onClick={() => joinMission()} className={classes.joinMission}>Join mission</button>}
+                    <button onClick={() => cancelMission(mission.mission_id)} >Leave Mission</button> :
+                    <button onClick={() => joinMission(mission.mission_id)} className={classes.joinMission}>Join mission</button>}
                 </td>
               </tr>
             )

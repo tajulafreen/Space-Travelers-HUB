@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRockets , cancelReservation} from '../../redux/rockets/rocketSlice';
 import classes from './rocket.module.css';
-import { bookRocket as bookrocketAction } from '../../redux/rockets/rocketSlice';
+import { bookRocket as bookrocketAction, cancelBooking as cancelBookingAction } from '../../redux/rockets/rocketSlice';
 
 const Rocket = () => {
   const rocketsdata = useSelector((state) => state.rockets);
@@ -23,6 +23,10 @@ const Rocket = () => {
     }
   }
 
+  const cancelBooking = (id) => {
+    dispatch(cancelBookingAction((id)))
+  }
+
   return (
     <div>
       {rocketsdata.loading ? (
@@ -39,7 +43,7 @@ const Rocket = () => {
                 <div className={classes.rocketDescription}>
                   <h2>{rocket.name} </h2>
                   <p><>{rocket.reserved && <span>reserved</span>}</>{rocket.description}</p>
-                  <button type='button' className={rocket.reserved && classes.cancel} onClick={() => bookRocket(rocket.id, rocket.reserved)}> {rocket.reserved ? <>cancel reservation </> : <>reserve</>}</button>
+                  <button className={rocket.reserved && classes.cancel} onClick={() => !rocket.reserved ? bookRocket(rocket.id) : cancelBooking(rocket.id)}> {rocket.reserved ? <>cancel reservation </> : <>reserve</>}</button>
                 </div>
               </li>
             )
