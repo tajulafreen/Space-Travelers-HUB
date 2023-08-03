@@ -5,7 +5,8 @@ const initialState = {
   data: [],
   status: 'idle',
   error: null,
-  loading: false
+  loading: false,
+  loaded: false
 };
 
 export const fetchRockets = createAsyncThunk('rockets/fetchData', async () => {
@@ -69,6 +70,7 @@ const rocketsSlice = createSlice({
       .addCase(fetchRockets.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.data = action.payload;
+        state.loaded = true;
       })
       .addCase(fetchRockets.rejected, (state, action) => {
         state.status = 'failed';
@@ -81,4 +83,4 @@ const rocketsSlice = createSlice({
 });
 
 export default rocketsSlice.reducer;
-export const { bookRocket,cancelBooking } = rocketsSlice.actions;
+export const { bookRocket, cancelBooking } = rocketsSlice.actions;

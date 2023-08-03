@@ -11,7 +11,9 @@ const Mission = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMissionThunk())
+    if (!state.loaded) {
+      dispatch(fetchMissionThunk())
+    }
   }, [])
 
   const joinMission = (id) => {
