@@ -4,6 +4,7 @@ import { missionSelector } from '../../redux/missions/missionSlice';
 import { useSelector, } from 'react-redux/es/hooks/useSelector';
 import { useDispatch } from 'react-redux';
 import classes from './mission.module.css';
+import { joinMission as joinMissionAction } from '../../redux/missions/missionSlice';
 
 const Mission = () => {
   const state = useSelector(missionSelector);
@@ -12,6 +13,14 @@ const Mission = () => {
   useEffect(() => {
     dispatch(fetchMissionThunk())
   }, [])
+
+
+
+
+  const joinMission = (id) => {
+    dispatch(joinMissionAction(id));
+    console.log(state);
+  }
 
   return (
     <main>
@@ -31,7 +40,7 @@ const Mission = () => {
           </th>
 
           <th>
-            
+
           </th>
         </thead>
 
@@ -42,8 +51,12 @@ const Mission = () => {
               <tr key={mission.id}>
                 <td><h3>{mission.mission_name}</h3></td>
                 <td><p>{mission.description}</p></td>
-                <td><div className={classes.status} ><p>active member</p></div></td>
-                <td><button>Leave Mission</button></td>
+                <td><div className={!mission.joined ? classes.statusNotActive : classes.StatusActive} ><p> {mission.reserved ? <>Not a member</> : <> Active member</>}</p></div></td>
+                <td>
+                  {mission.joined ?
+                    <button >Leave Mission</button> :
+                    <button onClick={() => joinMission()} className={classes.joinMission}>Join mission</button>}
+                </td>
               </tr>
             )
 
