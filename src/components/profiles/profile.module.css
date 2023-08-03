@@ -26,13 +26,12 @@ p {
   margin-top: 40px;
 }
 
-
-.column > ul:last-child{
+.column > ul:last-child {
   border-bottom: none;
 }
 
-.column ul li  {
+.column ul li {
   padding: 30px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
-  
+
