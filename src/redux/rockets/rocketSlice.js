@@ -51,7 +51,6 @@ const rocketsSlice = createSlice({
       state.data = bookRocket
     },
     cancelBooking: (state, action) => {
-      console.log(action.payload);
       const bookRocket = state.data.map((rocket) => {
         if (rocket.id === action.payload) {
           return { ...rocket, reserved: false }

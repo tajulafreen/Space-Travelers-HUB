@@ -21,7 +21,6 @@ const missionsSlice = createSlice({
     initialState,
     reducers: {
         joinMission: (state, action) => {
-            console.log(action.payload);
             const join = state.missions.map((mission) => (
                 { ...mission, joined: action.payload === mission.mission_id ? true : mission.joined }
             ));
