@@ -11,7 +11,7 @@ const Profile = ()=> {
     <section className="profile-container">
       <div className="column">
         <h2 className="column-head">My Missions</h2>
-        {!myJoinedMissions.length ? (
+        {myJoinedMissions.length === 0? (
           <p className="empty-message">No joined missions.</p>
         ) : (
           <ul className="u-list">
