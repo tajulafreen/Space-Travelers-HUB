@@ -26,6 +26,15 @@ export const fetchRockets = createAsyncThunk('rockets/fetchData', async () => {
   }
 });
 
+export const cancelReservation = createAsyncThunk('rockets/cancelReservation', async (rocketId, { getState }) => {
+  const state = getState();
+  const newState = state.rockets.data.map((rocket) => {
+    if (rocket.id !== rocketId) return rocket;
+    return { ...rocket, reserved: false };
+  });
+  return newState;
+});
+
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
@@ -64,6 +73,9 @@ const rocketsSlice = createSlice({
       .addCase(fetchRockets.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(cancelReservation.fulfilled, (state, action) => {
+        state.data = action.payload;
       });
   },
 });

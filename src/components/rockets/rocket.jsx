@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRockets } from '../../redux/rockets/rocketSlice';
+import { fetchRockets , cancelReservation} from '../../redux/rockets/rocketSlice';
 import classes from './rocket.module.css';
 import { bookRocket as bookrocketAction, cancelBooking as cancelBookingAction } from '../../redux/rockets/rocketSlice';
 
@@ -14,8 +14,13 @@ const Rocket = () => {
   }, [dispatch])
 
 
-  const bookRocket = (id) => {
-    dispatch(bookrocketAction(id))
+  const bookRocket = (rocketId, reserved) => {
+    if(reserved){
+      dispatch(cancelReservation(rocketId));
+    }
+    else{
+      dispatch(bookrocketAction(rocketId));
+    }
   }
 
   const cancelBooking = (id) => {
