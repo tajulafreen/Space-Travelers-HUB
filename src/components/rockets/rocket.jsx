@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRockets } from '../../redux/rockets/rocketSlice';
+import { fetchRockets , cancelReservation} from '../../redux/rockets/rocketSlice';
 import classes from './rocket.module.css';
 import { bookRocket as bookrocketAction } from '../../redux/rockets/rocketSlice';
 
@@ -14,8 +14,13 @@ const Rocket = () => {
   }, [dispatch])
 
 
-  const bookRocket = (id) => {
-    dispatch(bookrocketAction(id))
+  const bookRocket = (rocketId, reserved) => {
+    if(reserved){
+      dispatch(cancelReservation(rocketId));
+    }
+    else{
+      dispatch(bookrocketAction(rocketId));
+    }
   }
 
   return (
@@ -34,7 +39,7 @@ const Rocket = () => {
                 <div className={classes.rocketDescription}>
                   <h2>{rocket.name} </h2>
                   <p><>{rocket.reserved && <span>reserved</span>}</>{rocket.description}</p>
-                  <button className={rocket.reserved && classes.cancel} onClick={() => bookRocket(rocket.id)}> {rocket.reserved ? <>cancel reservation </> : <>reserve</>}</button>
+                  <button type='button' className={rocket.reserved && classes.cancel} onClick={() => bookRocket(rocket.id, rocket.reserved)}> {rocket.reserved ? <>cancel reservation </> : <>reserve</>}</button>
                 </div>
               </li>
             )
