@@ -5,19 +5,22 @@ import Rocket from './rockets/rocket';
 
 const routes = [
   {
-    id: 1,
-    path: '/profile',
-    element: <Profile />,
+    id: 3,
+    path: '/',
+    element: <Rocket />,
+    navigationContent: "Rockets"
   },
   {
     id: 2,
     path: '/missions',
     element: <Mission />,
+    navigationContent: "Missions"
   },
   {
-    id: 3,
-    path: '/rockets?',
-    element: <Rocket />,
+    id: 1,
+    path: '/profile',
+    element: <Profile />,
+    navigationContent: "My Profile",
   },
 ];
 

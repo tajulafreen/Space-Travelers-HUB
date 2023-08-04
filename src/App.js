@@ -8,10 +8,9 @@ import Header from './components/header/Header';
 function App() {
   return (
     <>
-      <Header />
+      <Header links={routes} />
       <Routes>
       {routes.map((route) => (
-        
             <Route
               key={route.id}
               path={route.path}

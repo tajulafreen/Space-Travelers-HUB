@@ -3,7 +3,8 @@ import classes from './header.module.css';
 import headerLogo from '../../assets/images/headerLogo.png';
 import NavLink from '../navLink/NavLink';
 
-const Header = () => {
+const Header = ({ links }) => {
+
     return (
         <header className={classes.header}>
             <div className={classes["header-container"]}>
@@ -14,22 +15,11 @@ const Header = () => {
                 <div className="">
                     <nav>
                         <ul>
-                            <li>
-                                <NavLink path={"/"} content={"Rocket"} />
-                            </li>
-
-                            <li>
-                                <NavLink path={"/missions"} content={"Missions"} />
-                            </li>
-
-                            <li>
-                                <div className={classes.separater}></div>
-                            </li>
-
-                            <li>
-                                <NavLink path={"/profile"} content={"My Profile"} />
-                            </li>
-
+                            {links.map((link, index) => (
+                                <li key={index}>
+                                    <NavLink path={link.path} content={link.navigationContent} />
+                                </li>
+                            ))}
                         </ul>
                     </nav>
                 </div>
