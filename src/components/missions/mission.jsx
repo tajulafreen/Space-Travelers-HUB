@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { fetchMissionThunk } from '../../redux/missions/missionSlice';
 import { missionSelector } from '../../redux/missions/missionSlice';
-import { useSelector, } from 'react-redux/es/hooks/useSelector';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import classes from './mission.module.css';
 import { joinMission as joinMissionAction, cancelMission as cancelMissionAction } from '../../redux/missions/missionSlice';
 
@@ -25,7 +24,7 @@ const Mission = () => {
   }
 
   return (
-    <main>
+    <>
       {state.loading && <p className={classes.loadingIndicator} >...loading</p>}
       <table className={classes.missionTable}>
         <thead className={classes.missionThead}>
@@ -64,7 +63,7 @@ const Mission = () => {
           })}
         </tbody>
       </table>
-    </main >
+    </>
   );
 }
 

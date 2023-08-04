@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mission component renders correctly 1`] = `
+<div>
+  <p
+    class="loadingIndicator"
+  >
+    ...loading
+  </p>
+  <table
+    class="missionTable"
+  >
+    <thead
+      class="missionThead"
+    >
+      <th>
+        <h3>
+          Mision
+        </h3>
+      </th>
+      <th>
+        <h3>
+          Description
+        </h3>
+      </th>
+      <th>
+        <h3>
+          Status
+        </h3>
+      </th>
+      <th />
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;
