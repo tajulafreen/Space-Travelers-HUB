@@ -1,9 +1,6 @@
-<h1>🧮 math-magicians</h1>
-</div>
-
 <!-- TABLE OF CONTENTS -->
 
-# 📖 Book store
+# 🪐 Space-Travelers-HUB
 
 - [About the Project](#about-project)
   - [🛠️ Built With](#built-with)
@@ -46,7 +43,7 @@
 
 ### 🔑 Key Features <a name="key-features"></a>
 
-- ✨ **Simple book management**: full demonstration of redux toolkit, speed and efficiency 
+- ✨ **Simple spacial travelling adim application**: full demonstration of redux toolkit, speed and efficiency 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
